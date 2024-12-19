@@ -1,0 +1,86 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model IEnumerable<IdentityRole>
+
+@{
+    ViewData["Title"] = "Branches";
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["AreaName"] = "Admin";
+    ViewData["ControllerName"] = "Role";
+    int serialNumber = 0;
+}
+
+@section css {
+    <style>
+        .btnEdit:hover {
+            cursor: pointer;
+        }
+    </style>
+}
+
+
+<div class="app-content-header">
+    <!--begin::Container-->
+    <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row">
+            <div class="col-sm-6">
+                <h3 class="mb-0">
+                    Roles
+                    <a asp-area="Admin" asp-controller="Role" asp-action="Create" class="btn btn-sm btn-primary">Add New</a>
+                </h3>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-end">
+                    <li class="breadcrumb-item"><a href="#">Master</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Roles
+                    </li>
+                </ol>
+            </div>
+        </div> <!--end::Row-->
+    </div> <!--end::Container-->
+</div> <!--end::App Content Header--> <!--begin::App Content-->
+
+
+<div class="app-content">
+    <!--begin::Container-->
+    <div class="container-fluid">
+        <partial name="~/Views/shared/_Alertpartial.cshtml" />
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12" id="leftCard">
+                <div class=" mb-4">
+
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 10px">#</th>
+                                <th>Role Name</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    serialNumber++;
+                                    <tr class="align-middle">
+                                        <td>@serialNumber</td>
+                                        <td>@item.Name</td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                                        </td>
+
+                                    </tr>
+                                }
+
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* <a asp-action="Create" class="btn btn-primary">Create Role</a> *@
