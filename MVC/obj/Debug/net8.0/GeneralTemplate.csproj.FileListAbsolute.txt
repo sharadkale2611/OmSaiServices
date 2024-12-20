@@ -851,3 +851,4 @@ D:\Projects\OmSaiServices\MVC\bin\Debug\net8.0\refs\System.Xml.XPath.XDocument.d
 D:\Projects\OmSaiServices\MVC\bin\Debug\net8.0\refs\WindowsBase.dll
 D:\Projects\OmSaiServices\MVC\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
 D:\Projects\OmSaiServices\MVC\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll
+D:\Projects\OmSaiServices\MVC\obj\Debug\net8.0\GeneralTemplate.sourcelink.json

@@ -3,8 +3,28 @@
   "WorkspaceRootPath": "D:\\Projects\\OmSaiServices\\MVC\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{22BA9B2A-3ECB-46BC-AAF1-C2F6AF45287E}|GeneralTemplate.csproj|d:\\projects\\omsaiservices\\mvc\\areas\\admin\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22BA9B2A-3ECB-46BC-AAF1-C2F6AF45287E}|GeneralTemplate.csproj|solutionrelative:areas\\admin\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22BA9B2A-3ECB-46BC-AAF1-C2F6AF45287E}|GeneralTemplate.csproj|d:\\projects\\omsaiservices\\mvc\\areas\\admin\\views\\user\\assignrole.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{22BA9B2A-3ECB-46BC-AAF1-C2F6AF45287E}|GeneralTemplate.csproj|solutionrelative:areas\\admin\\views\\user\\assignrole.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22BA9B2A-3ECB-46BC-AAF1-C2F6AF45287E}|GeneralTemplate.csproj|d:\\projects\\omsaiservices\\mvc\\areas\\admin\\views\\user\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{22BA9B2A-3ECB-46BC-AAF1-C2F6AF45287E}|GeneralTemplate.csproj|solutionrelative:areas\\admin\\views\\user\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22BA9B2A-3ECB-46BC-AAF1-C2F6AF45287E}|GeneralTemplate.csproj|d:\\projects\\omsaiservices\\mvc\\areas\\admin\\views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{22BA9B2A-3ECB-46BC-AAF1-C2F6AF45287E}|GeneralTemplate.csproj|solutionrelative:areas\\admin\\views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{22BA9B2A-3ECB-46BC-AAF1-C2F6AF45287E}|GeneralTemplate.csproj|d:\\projects\\omsaiservices\\mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{22BA9B2A-3ECB-46BC-AAF1-C2F6AF45287E}|GeneralTemplate.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22BA9B2A-3ECB-46BC-AAF1-C2F6AF45287E}|GeneralTemplate.csproj|d:\\projects\\omsaiservices\\mvc\\areas\\identity\\data\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22BA9B2A-3ECB-46BC-AAF1-C2F6AF45287E}|GeneralTemplate.csproj|solutionrelative:areas\\identity\\data\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{22BA9B2A-3ECB-46BC-AAF1-C2F6AF45287E}|GeneralTemplate.csproj|d:\\projects\\omsaiservices\\mvc\\areas\\admin\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,24 +42,89 @@
       "DocumentGroups": [
         {
           "DockedWidth": 215,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AssignRole.cshtml",
+              "DocumentMoniker": "D:\\Projects\\OmSaiServices\\MVC\\Areas\\Admin\\Views\\User\\AssignRole.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\User\\AssignRole.cshtml",
+              "ToolTip": "D:\\Projects\\OmSaiServices\\MVC\\Areas\\Admin\\Views\\User\\AssignRole.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\User\\AssignRole.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-19T13:29:52.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Projects\\OmSaiServices\\MVC\\Areas\\Admin\\Views\\User\\Create.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\User\\Create.cshtml",
+              "ToolTip": "D:\\Projects\\OmSaiServices\\MVC\\Areas\\Admin\\Views\\User\\Create.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\User\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-19T13:28:05.122Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AppUser.cs",
+              "DocumentMoniker": "D:\\Projects\\OmSaiServices\\MVC\\Areas\\Identity\\Data\\AppUser.cs",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Data\\AppUser.cs",
+              "ToolTip": "D:\\Projects\\OmSaiServices\\MVC\\Areas\\Identity\\Data\\AppUser.cs",
+              "RelativeToolTip": "Areas\\Identity\\Data\\AppUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T13:10:06.785Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Projects\\OmSaiServices\\MVC\\Areas\\Admin\\Views\\User\\Index.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\User\\Index.cshtml",
+              "ToolTip": "D:\\Projects\\OmSaiServices\\MVC\\Areas\\Admin\\Views\\User\\Index.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\User\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-19T13:01:45.953Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\Projects\\OmSaiServices\\MVC\\Areas\\Admin\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\Projects\\OmSaiServices\\MVC\\Areas\\Admin\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Areas\\Admin\\Controllers\\UserController.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAADwv0IAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T12:59:23.084Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Projects\\OmSaiServices\\MVC\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "D:\\Projects\\OmSaiServices\\MVC\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-19T11:50:53.525Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "RoleController.cs",
               "DocumentMoniker": "D:\\Projects\\OmSaiServices\\MVC\\Areas\\Admin\\Controllers\\RoleController.cs",
               "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\RoleController.cs",
@@ -47,12 +132,11 @@
               "RelativeToolTip": "Areas\\Admin\\Controllers\\RoleController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-19T11:46:25.852Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-19T11:46:25.852Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "D:\\Projects\\OmSaiServices\\MVC\\Areas\\Admin\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "Areas\\Admin\\Views\\_ViewImports.cshtml",
@@ -60,8 +144,7 @@
               "RelativeToolTip": "Areas\\Admin\\Views\\_ViewImports.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-19T11:45:10.429Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-19T11:45:10.429Z"
             }
           ]
         }
