@@ -1,4 +1,6 @@
-﻿<!-- Modal -->
+﻿
+
+<!-- Modal -->
 <div class="modal fade" id="delete_confirm_model" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" >
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -9,10 +11,10 @@
 						<p><strong id="delete_display"></strong></p>
 					</blockquote>
 
-					<div class="mb-3">
+@* 					<div class="mb-3">
 						<label for="lblPassword" class="col-form-label">Confirm Password</label>
 						<input type="password" class="form-control" id="lblPassword" name="Password" placeholder="Confirm Password" required>
-					</div>
+					</div> *@
 					<button type="button" class="main-btn btn btn-warning cancel" id="closeModel" data-dismiss="modal">No</button>
 					<input type="hidden" name="id" id="delete_id" value="" />
 					<input type="submit" value="Yes" class="main-btn btn btn-danger" id="btnFormDelete" />
@@ -39,6 +41,7 @@
 	});
 
 	$('.btn-delete').click((event) => {
+		alert('123');
 		const delete_id = $(event.currentTarget).data('delete_id');
 		const delete_display = $(event.currentTarget).data('delete_display');
 		$('#delete_id').val(delete_id);

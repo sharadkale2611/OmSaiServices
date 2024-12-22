@@ -482,18 +482,12 @@
       "System.Threading.Tasks.Extensions/4.5.4": {},
       "OmSaiEnvironment/1.0.0": {
         "runtime": {
-          "OmSaiEnvironment.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "OmSaiEnvironment.dll": {}
         }
       },
       "OmSaiModels/1.0.0": {
         "runtime": {
-          "OmSaiModels.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "OmSaiModels.dll": {}
         }
       }
     }

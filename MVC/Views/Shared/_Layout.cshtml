@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="~/GeneralTemplate.styles.css" asp-append-version="true" />
     @await RenderSectionAsync("css", required: false)
 
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
 </head>
 <body>
     <header>
@@ -30,6 +32,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Admin" asp-controller="Role" asp-action="Index">Role</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Document" asp-action="Index">Document</a>
+                        </li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -47,7 +52,9 @@
             &copy; 2024 - Om Sai Services - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @await RenderSectionAsync("modals", required: false)
+
+    
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)

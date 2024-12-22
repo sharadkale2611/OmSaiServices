@@ -8,6 +8,8 @@ namespace OmSaiEnvironment
 {
 	public class DBConnection
 	{
-		public static string DefaultConnection = "Server=BOTMASTER-SRD\\MSSQLEXPRESS;Database=om_sai_services_db_v1;User Id=sa;Password=pass@1234;TrustServerCertificate=True";
-	}
+		public static string DefaultConnection = "Server=LAPTOP-JE6VQM16\\SQLEXPRESS;Database=OmSaiServices_Db_V2;Trusted_Connection=True;TrustServerCertificate=True";
+
+
+    }
 }
