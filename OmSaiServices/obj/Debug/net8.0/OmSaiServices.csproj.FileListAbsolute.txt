@@ -15,3 +15,4 @@ D:\Projects\OmSaiServices\OmSaiServices\obj\Debug\net8.0\OmSaiServices.dll
 D:\Projects\OmSaiServices\OmSaiServices\obj\Debug\net8.0\refint\OmSaiServices.dll
 D:\Projects\OmSaiServices\OmSaiServices\obj\Debug\net8.0\OmSaiServices.pdb
 D:\Projects\OmSaiServices\OmSaiServices\obj\Debug\net8.0\ref\OmSaiServices.dll
+D:\Projects\OmSaiServices\OmSaiServices\obj\Debug\net8.0\OmSaiServices.sourcelink.json

@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\MVC"
+    "\\MVC",
+    "\\MVC\\Areas",
+    "\\MVC\\Areas\\Admin",
+    "\\MVC\\Areas\\Admin\\Controllers"
   ],
   "SelectedNode": "\\MVC\\GeneralTemplate.sln",
   "PreviewInSolutionExplorer": false

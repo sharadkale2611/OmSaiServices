@@ -9,3 +9,4 @@ D:\Projects\OmSaiServices\OmSaiModels\obj\Debug\net8.0\OmSaiModels.dll
 D:\Projects\OmSaiServices\OmSaiModels\obj\Debug\net8.0\refint\OmSaiModels.dll
 D:\Projects\OmSaiServices\OmSaiModels\obj\Debug\net8.0\OmSaiModels.pdb
 D:\Projects\OmSaiServices\OmSaiModels\obj\Debug\net8.0\ref\OmSaiModels.dll
+D:\Projects\OmSaiServices\OmSaiModels\obj\Debug\net8.0\OmSaiModels.sourcelink.json
