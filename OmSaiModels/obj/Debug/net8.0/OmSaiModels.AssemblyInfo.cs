@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OmSaiModels")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6c7fca4636308709c54c2768e0c583a5bfa087ec")]
 [assembly: System.Reflection.AssemblyProductAttribute("OmSaiModels")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OmSaiModels")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

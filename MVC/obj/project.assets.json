@@ -8114,23 +8114,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {},
+    "C:\\Users\\LUBNA\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\OmSaiServices\\MVC\\GeneralTemplate.csproj",
+      "projectUniqueName": "D:\\Y-Saas\\OmSaiServices\\MVC\\GeneralTemplate.csproj",
       "projectName": "GeneralTemplate",
-      "projectPath": "D:\\Projects\\OmSaiServices\\MVC\\GeneralTemplate.csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\OmSaiServices\\MVC\\obj\\",
+      "projectPath": "D:\\Y-Saas\\OmSaiServices\\MVC\\GeneralTemplate.csproj",
+      "packagesPath": "C:\\Users\\LUBNA\\.nuget\\packages\\",
+      "outputPath": "D:\\Y-Saas\\OmSaiServices\\MVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\LUBNA\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -8139,21 +8139,20 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Projects\\OmSaiServices\\OmSaiEnvironment\\OmSaiEnvironment.csproj": {
-              "projectPath": "D:\\Projects\\OmSaiServices\\OmSaiEnvironment\\OmSaiEnvironment.csproj"
+            "D:\\Y-Saas\\OmSaiServices\\OmSaiEnvironment\\OmSaiEnvironment.csproj": {
+              "projectPath": "D:\\Y-Saas\\OmSaiServices\\OmSaiEnvironment\\OmSaiEnvironment.csproj"
             },
-            "D:\\Projects\\OmSaiServices\\OmSaiModels\\OmSaiModels.csproj": {
-              "projectPath": "D:\\Projects\\OmSaiServices\\OmSaiModels\\OmSaiModels.csproj"
+            "D:\\Y-Saas\\OmSaiServices\\OmSaiModels\\OmSaiModels.csproj": {
+              "projectPath": "D:\\Y-Saas\\OmSaiServices\\OmSaiModels\\OmSaiModels.csproj"
             },
-            "D:\\Projects\\OmSaiServices\\OmSaiServices\\OmSaiServices.csproj": {
-              "projectPath": "D:\\Projects\\OmSaiServices\\OmSaiServices\\OmSaiServices.csproj"
+            "D:\\Y-Saas\\OmSaiServices\\OmSaiServices\\OmSaiServices.csproj": {
+              "projectPath": "D:\\Y-Saas\\OmSaiServices\\OmSaiServices\\OmSaiServices.csproj"
             }
           }
         }
@@ -8166,9 +8165,8 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+        "auditMode": "direct"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -8220,20 +8218,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Text.Json' 7.0.3 has a known high severity vulnerability, https://github.com/advisories/GHSA-hh2w-p6rv-4g7w",
-      "libraryId": "System.Text.Json",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }

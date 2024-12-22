@@ -9,3 +9,15 @@ D:\Projects\OmSaiServices\OmSaiEnvironment\obj\Debug\net8.0\OmSaiEnvironment.dll
 D:\Projects\OmSaiServices\OmSaiEnvironment\obj\Debug\net8.0\refint\OmSaiEnvironment.dll
 D:\Projects\OmSaiServices\OmSaiEnvironment\obj\Debug\net8.0\OmSaiEnvironment.pdb
 D:\Projects\OmSaiServices\OmSaiEnvironment\obj\Debug\net8.0\ref\OmSaiEnvironment.dll
+D:\Y-Saas\OmSaiServices\OmSaiEnvironment\bin\Debug\net8.0\OmSaiEnvironment.deps.json
+D:\Y-Saas\OmSaiServices\OmSaiEnvironment\bin\Debug\net8.0\OmSaiEnvironment.dll
+D:\Y-Saas\OmSaiServices\OmSaiEnvironment\bin\Debug\net8.0\OmSaiEnvironment.pdb
+D:\Y-Saas\OmSaiServices\OmSaiEnvironment\obj\Debug\net8.0\OmSaiEnvironment.GeneratedMSBuildEditorConfig.editorconfig
+D:\Y-Saas\OmSaiServices\OmSaiEnvironment\obj\Debug\net8.0\OmSaiEnvironment.AssemblyInfoInputs.cache
+D:\Y-Saas\OmSaiServices\OmSaiEnvironment\obj\Debug\net8.0\OmSaiEnvironment.AssemblyInfo.cs
+D:\Y-Saas\OmSaiServices\OmSaiEnvironment\obj\Debug\net8.0\OmSaiEnvironment.csproj.CoreCompileInputs.cache
+D:\Y-Saas\OmSaiServices\OmSaiEnvironment\obj\Debug\net8.0\OmSaiEnvironment.sourcelink.json
+D:\Y-Saas\OmSaiServices\OmSaiEnvironment\obj\Debug\net8.0\OmSaiEnvironment.dll
+D:\Y-Saas\OmSaiServices\OmSaiEnvironment\obj\Debug\net8.0\refint\OmSaiEnvironment.dll
+D:\Y-Saas\OmSaiServices\OmSaiEnvironment\obj\Debug\net8.0\OmSaiEnvironment.pdb
+D:\Y-Saas\OmSaiServices\OmSaiEnvironment\obj\Debug\net8.0\ref\OmSaiEnvironment.dll
