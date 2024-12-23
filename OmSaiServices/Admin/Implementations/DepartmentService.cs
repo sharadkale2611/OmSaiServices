@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -20,8 +20,8 @@ namespace OmSaiServices.Admin.Implementations
 
         public DepartmentService()
         {
-            sp_cud = "sp_CreateUpdateDeleteRestore_Departments";
-            sp_r = "sp_GetAll_Departments";
+            sp_cud = "usp_CreateUpdateDeleteRestore_Departments";
+            sp_r = "usp_GetAll_Departments";
             _mapper = new Mapper();
         }
 

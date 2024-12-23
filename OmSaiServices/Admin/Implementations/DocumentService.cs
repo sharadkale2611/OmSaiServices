@@ -19,8 +19,8 @@ namespace OmSaiServices.Admin.Implementations
 
         public DocumentService()
         {
-            usp_cud = "Usp_CreateUpdateDeleteRestore_Documents";
-            usp_r = "Usp_GetAll_Documents";
+            usp_cud = "usp_CreateUpdateDeleteRestore_Documents";
+            usp_r = "usp_GetAll_Documents";
             _mapper = new Mapper();
         }
         public int Create(DocumentModel model)

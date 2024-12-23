@@ -10,7 +10,7 @@ namespace OmSaiModels.Admin
 	public class QualificationModel
 	{
 		[Key]
-		public int QualificationId { get; set; }
+		public int? QualificationId { get; set; }
 
 		[Required]
 		public string QualificationName { get; set; }

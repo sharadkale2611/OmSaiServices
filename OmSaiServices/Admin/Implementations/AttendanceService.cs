@@ -20,8 +20,8 @@ namespace OmSaiServices.Admin.Implementations
 
         public AttendanceService()
         {
-            sp_cud = "sp_CreateUpdateDeleteRestore_Attendance";
-            sp_r = "sp_GelAll_Attendance";
+            sp_cud = "usp_CreateUpdateDeleteRestore_Attendance";
+            sp_r = "usp_GelAll_Attendance";
             _mapper = new Mapper();
         }
 

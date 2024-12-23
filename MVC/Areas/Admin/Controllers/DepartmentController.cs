@@ -2,38 +2,26 @@
 using Microsoft.AspNetCore.Mvc;
 using OmSaiModels.Admin;
 using OmSaiServices.Admin.Implementations;
+using OmSaiServices.Admin.Interfaces;
 
 namespace GeneralTemplate.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class DeparmentController : Controller
+    public class DepartmentController : Controller
     {
         private readonly DepartmentService _departmentService;
-        public DeparmentController()
+        public DepartmentController()
         {
             _departmentService = new DepartmentService();
 
         }
 
-        //public IActionResult Index()
-        //{
-
-        //    return View(_departmentService.GetAll());
-        //}
-
-
         public ActionResult Index()
         {
             var allData = _departmentService.GetAll();
+			ViewBag.AllData = allData;
 
-            return View(allData);
-        }
-
-        public IActionResult Create()
-        {
-            DepartmentModel s = new DepartmentModel();
-
-            return View();
+			return View();
         }
 
 
@@ -72,23 +60,6 @@ namespace GeneralTemplate.Areas.Admin.Controllers
             }
         }
 
-
-
-       
-        //[HttpPost]
-        //public IActionResult Create(DepartmentModel d)
-        //{
-        //    DepartmentModel s = new DepartmentModel();
-        //    _departmentService.Create(d);
-
-        //    return RedirectToAction("Index");
-        //}
-
-        public IActionResult Edit(int id)
-        {
-            DepartmentModel s =_departmentService.GetById(id);
-            return View(s);
-        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -133,15 +104,14 @@ namespace GeneralTemplate.Areas.Admin.Controllers
         //}
 
 
-        public IActionResult Delete(int id)
-        {
-            _departmentService.Delete(id);
-            return RedirectToAction("Index");
-        }
+		public IActionResult Delete(int id)
+		{
+			_departmentService.Delete(id);
+			return RedirectToAction("Index");
+		}
 
 
 
 
-
-    }
+	}
 }

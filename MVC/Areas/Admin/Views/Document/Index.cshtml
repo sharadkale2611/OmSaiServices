@@ -59,13 +59,14 @@
                                         <td>@serialNumber</td>
                                         <td>@document.DocumentName</td>
                                         <td>
-                                            @if (document.Status)
+
+                                            @if (document.Status == true)
                                             {
-                                                <span class="badge text-bg-info text-white">Active</span>
+                                                <span class="badge text-success">Active</span>
                                             }
                                             else
                                             {
-                                                <span class="badge text-bg-danger">Inactive</span>
+                                                <span class="badge text-danger">Inactive</span>
                                             }
                                         </td>
                                         <td>
@@ -98,7 +99,7 @@
                         <div class="card-body">
                             <div class="mb-3">
                                 <label asp-for="DocumentName" class="col-form-label">Document Name</label>
-                                <input type="text" class="form-control" asp-for="DocumentName" placeholder="Document Name" required>
+                                <input type="text" class="form-control" asp-for="DocumentName"  placeholder="Document Name" required>
                             </div>
                             <div class="form-check mt-2">
                                 <input class="form-check-input" asp-for="Status" type="checkbox" id="status" checked>
@@ -146,6 +147,7 @@
 
             let data = $(this).data();
             $('#documentId').val(data.id);
+            $('#DocumentName').val(data.name);
             $('#documentForm').attr('action', '/admin/Document/Edit');
         });
         $('.btn-delete').click(function () {

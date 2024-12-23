@@ -10,5 +10,6 @@ namespace OmSaiServices.Admin.Interfaces
 {
     public interface IAttendanceService:IRepository<AttendanceModel>
     {
-    }
+		// Add Here extra functions
+	}
 }

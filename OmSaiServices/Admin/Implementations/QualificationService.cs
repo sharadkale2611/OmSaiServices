@@ -19,8 +19,8 @@ namespace OmSaiServices.Admin.Implementations
 
 		public QualificationService()
 		{
-			sp_cud = "sp_CreateUpdateDeleteRestore_Qualifications";
-			sp_r = "sp_GetAll_Qualifications";
+			sp_cud = "usp_CreateUpdateDeleteRestore_Qualifications";
+			sp_r = "usp_GetAll_Qualifications";
 			_mapper = new Mapper();
 		}
 

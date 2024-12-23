@@ -10,7 +10,7 @@ namespace OmSaiModels.Admin
     public class DepartmentModel
     {
         [Key]
-        public int DepartmentId { get; set; }
+        public int? DepartmentId { get; set; }
 
         [Required]
         public string DepartmentName { get; set; }

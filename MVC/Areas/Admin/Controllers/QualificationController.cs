@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OmSaiModels.Admin;
 using OmSaiServices.Admin.Implementations;
+using OmSaiServices.Admin.Interfaces;
 
 namespace GeneralTemplate.Areas.Admin.Controllers
 {
@@ -12,7 +13,8 @@ namespace GeneralTemplate.Areas.Admin.Controllers
             private readonly QualificationService _qualificationService;
             public QualificationController()
             {
-                _qualificationService = new QualificationService();
+
+			_qualificationService = new QualificationService();
 
             }
 
@@ -27,13 +29,8 @@ namespace GeneralTemplate.Areas.Admin.Controllers
             {
                 var allData = _qualificationService.GetAll();
 
-                return View(allData);
-            }
-
-            public IActionResult Create()
-            {
-                QualificationModel s = new QualificationModel();
-
+                ViewBag.AllData = allData;
+                
                 return View();
             }
 
