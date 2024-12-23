@@ -19,6 +19,5 @@ namespace OmSaiModels.Admin
         [Required]
         public Boolean Status { get; set; } = true;
 
-
     }
 }
