@@ -47,7 +47,7 @@ bin/
 obj/
 **/bin/
 **/obj/
-
+/obj/
 # Specifically ignore net8.0 folder inside bin/Debug for MVC
 MVC/bin/Debug/net8.0/
 OmSaiServices/obj/Debug/
