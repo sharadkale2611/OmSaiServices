@@ -16,7 +16,7 @@ namespace OmSaiModels.Admin
 		public string QualificationName { get; set; }
 
 		[Required]
-		public bool Status { get; set; } = true;
+        public bool Status { get; set; } = true;
 
-	}
+    }
 }
