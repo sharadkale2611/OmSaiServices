@@ -3,7 +3,7 @@ OmSaiEnvironment/
 
 # Ignore appsettings.json inside MVC
 MVC/appsettings.json
-
+#testing
 # Ignore common ASP.NET Core and Visual Studio files
 *.user
 *.userosscache
