@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 
 namespace OmSaiModels.Admin
 {
-	public class DocumentModel
-	{
-		[Key]
-		public int DocumentId { get; set; }
+    public class DocumentModel
+    {
+        [Key]
+        public int? DocumentId { get; set; }
 
-		[Required(ErrorMessage = "DocumentName is required.")]
-		[StringLength(100, ErrorMessage = "DocumentName cannot exceed 100 characters.")]
-		public string DocumentName { get; set; }
-		
-		[Required]
-		public Boolean Status { get; set; } = true;
-	}
+        [Required(ErrorMessage = "DocumentName is required.")]
+        [StringLength(100, ErrorMessage = "DocumentName cannot exceed 100 characters.")]
+        public string DocumentName { get; set; }
+
+        [Required]
+        public Boolean Status { get; set; } = true;
+
+    }
 }

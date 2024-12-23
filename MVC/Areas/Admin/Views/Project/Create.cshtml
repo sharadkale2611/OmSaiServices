@@ -1,0 +1,117 @@
+﻿@model OmSaiModels.Admin.ProjectModel
+
+
+@{
+	ViewData["Title"] = "Create Project";
+	
+	var StatusList = new List<string>(){
+		"Upcomping","Running","Completed","Cancelled"
+	};
+
+}
+
+
+<div class="app-content">
+    <div class="container-fluid">
+        <partial name="~/Views/shared/_alertpartial.cshtml" />
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12" >
+                <div class="card mb-4">
+                        Project Form
+                        <form id="assetForm" method="post" asp-area="admin" asp-controller="Project" asp-action="Create" asp-antiforgery="true">
+                            <input type="hidden" asp-for="ProjectId" id="projectId" />
+                            <div class="card-body">
+                              
+							<div class="row">
+								<div class="row">
+
+								
+								<div class="col-md-6  mb-3">
+                                    <label asp-for="ProjectName" class="col-form-label">Project Name</label>
+                                    <input type="text" class="form-control" asp-for="ProjectName" placeholder="Project Name" required>
+									<span asp-validation-for="ProjectName" class="text-danger"></span>
+
+                                </div>
+                               
+								<div class="col-md-6  mb-3">
+									<label asp-for="ProjectDiscription" class="col-form-label">Project Name</label>
+									<input type="text" class="form-control" asp-for="ProjectDiscription" placeholder="ProjectDiscription" required>
+									<span asp-validation-for="ProjectDiscription" class="text-danger"></span>
+
+								</div>
+								</div>
+								
+								<div class="row">
+
+
+									<div class="col-md-6  mb-3">
+										<label asp-for="TotalManPower" class="col-form-label">TotalManPower</label>
+										<input type="text" class="form-control" asp-for="TotalManPower" placeholder="TotalManPower" required>
+										<span asp-validation-for="TotalManPower" class="text-danger"></span>
+
+									</div>
+
+									<div class="col-md-6  mb-3">
+										<label asp-for="ProjectBudget" class="col-form-label">ProjectBudget</label>
+										<input type="text" class="form-control" asp-for="ProjectBudget" placeholder="ProjectBudget" required>
+										<span asp-validation-for="ProjectBudget" class="text-danger"></span>
+
+									</div>
+								</div>	
+
+								<div class="row">
+
+									<div class="col-md-6  mb-3">
+										<label asp-for="ProjectBudget" class="col-form-label">Status</label>
+										<select class="form-control" type="text" asp-for="Status" placeholder="Status" required>
+											<option value="">Select Status</option>
+											@foreach (string status in StatusList)
+											{
+												<option value="@status">@status</option>
+											}
+										</select>
+										<span asp-validation-for="Status" class="text-danger"></span>
+
+									</div>
+
+									<div class="col-md-6  mb-3">
+										<label asp-for="Remark" class="col-form-label">Remark</label>
+										<input type="text" class="form-control" asp-for="TotalManPower" placeholder="Remark" required>
+										<span asp-validation-for="Remark" class="text-danger"></span>
+
+									</div>
+								</div>
+
+								<div class="row">
+
+
+									<div class="col-md-6  mb-3">
+										<label asp-for="ProjectStartDate" class="col-form-label">ProjectStartDate</label>
+										<input type="text" class="form-control" asp-for="ProjectStartDate" placeholder="ProjectStartDate" required>
+										<span asp-validation-for="ProjectStartDate" class="text-danger"></span>
+
+									</div>
+
+									<div class="col-md-6  mb-3">
+										<label asp-for="ProjectEndDate" class="col-form-label">ProjectEndDate</label>
+										<input type="text" class="form-control" asp-for="ProjectEndDate" placeholder="ProjectEndDate" required>
+										<span asp-validation-for="ProjectEndDate" class="text-danger"></span>
+
+									</div>
+								</div>
+
+
+							</div>
+
+                            </div>
+
+                            <div class="card-footer text-center">
+                                <button type="submit" class="btn btn-outline-warning" id="btnSubmit">Save</button>
+                                <button type="button" class="btn btn-outline-danger" id="btnCloseForm">Cancel</button>
+                            </div>
+                        </form>                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
