@@ -1,0 +1,43 @@
+# Ignore OmSaiEnvironment folder
+OmSaiEnvironment/
+
+# Ignore appsettings.json inside MVC
+MVC/appsettings.json
+
+# Ignore common ASP.NET Core and Visual Studio files
+*.user
+*.userosscache
+*.suo
+*.pdb
+*.obj/
+*.exe
+*.dll
+*.cache/
+bin/
+obj/
+.vs/
+.vscode/
+
+# Ignore dependency cache folders
+**/node_modules/
+**/bower_components/
+**/wwwroot/lib/
+
+
+# Ignore logs
+*.log
+Logs/
+
+
+# Ignore build artifacts
+*.build.log
+*.publish/
+*.PublishProfiles/
+
+# Ignore git folders
+.git/
+.github/
+
+# Ignore IDE-specific files
+*.DS_Store
+Thumbs.db
