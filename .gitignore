@@ -41,3 +41,10 @@ Logs/
 # Ignore IDE-specific files
 *.DS_Store
 Thumbs.db
+
+# Ignore build output folders
+bin/
+obj/
+
+# Specifically ignore net8.0 folder inside bin/Debug for MVC
+MVC/bin/Debug/net8.0/
