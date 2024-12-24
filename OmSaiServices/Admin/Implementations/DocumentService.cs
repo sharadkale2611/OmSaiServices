@@ -72,7 +72,6 @@ namespace OmSaiServices.Admin.Implementations
 
             return new List<KeyValuePair<string, object>>
             {
-
                 new("@DocumentId", DocumentId),
                 new("@DocumentName", model.DocumentName),
                 new("@Status", model.Status),
@@ -100,5 +99,6 @@ namespace OmSaiServices.Admin.Implementations
                 new SqlParameter("@Status", Status)
             };
         }
+
     }
 }

@@ -1,6 +1,6 @@
 # Ignore OmSaiEnvironment folder
 OmSaiEnvironment/
-/OmSaiEnvironment/
+
 # Ignore appsettings.json inside MVC
 MVC/appsettings.json
 
@@ -16,6 +16,9 @@ MVC/appsettings.json
 bin/
 obj/
 .vs/
+/vs/
+**/vs/
+
 .vscode/
 
 # Ignore dependency cache folders
@@ -47,7 +50,7 @@ bin/
 obj/
 **/bin/
 **/obj/
-
+/obj/
 # Specifically ignore net8.0 folder inside bin/Debug for MVC
 MVC/bin/Debug/net8.0/
 OmSaiServices/obj/Debug/

@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace OmSaiServices.Admin.Interfaces
 {
-    public interface IDocumentService: IRepository<DocumentModel>
+    public interface IDocumentService : IRepository<DocumentModel>
     {
-        // Add any document-specific methods if needed
     }
 }
