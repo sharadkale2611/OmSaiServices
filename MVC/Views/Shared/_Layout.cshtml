@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
     <script src="~/assets/js/require.min.js"></script>
+
+    <script>
+        var rootPath = '@Url.Content("~/")';
+    </script>
     <script>
         requirejs.config({
             baseUrl: '.'
@@ -45,7 +49,7 @@
             <div class="header py-4">
                 <div class="container">
                     <div class="d-flex">
-                        <a class="header-brand" href="./index.html">
+                        <a class="header-brand" href="/">
                             <img src="~/demo/brand/logo.png" class="header-brand-img" alt="tabler logo">
                             Om Sai Services
                         </a>
@@ -145,7 +149,7 @@
                                         <a asp-area="Admin" asp-controller="Document" asp-action="Index" class="dropdown-item "> <i class="fe fe-file-text"></i> Documents</a>
                                         <a asp-area="Admin" asp-controller="Department" asp-action="Index" class="dropdown-item "><i class="fe fe-shield"></i> Departments</a>
                                         <a asp-area="Admin" asp-controller="Qualification" asp-action="Index" class="dropdown-item "> <i class="fe fe-send"></i> Qualification</a>
-                                        <a asp-area="Admin" asp-controller="Qualification" asp-action="Index" class="dropdown-item text-danger"> <i class="fe fe-box"></i> Assets</a>
+                                        <a asp-area="Admin" asp-controller="Asset" asp-action="Index" class="dropdown-item"> <i class="fe fe-box"></i> Assets</a>
                                     </div>
                                 </li>
 
@@ -175,42 +179,6 @@
                                     <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link text-danger"><i class="fe fe-file"></i>Invoice</a>
                                 </li>
 
-                                @* <li class="nav-item dropdown"> *@
-                                @*     <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i> Components</a> *@
-                                @*     <div class="dropdown-menu dropdown-menu-arrow"> *@
-                                @*         <a href="./maps.html" class="dropdown-item ">Maps</a> *@
-                                @*         <a href="./icons.html" class="dropdown-item ">Icons</a> *@
-                                @*         <a href="./store.html" class="dropdown-item ">Store</a> *@
-                                @*         <a href="./blog.html" class="dropdown-item ">Blog</a> *@
-                                @*     </div> *@
-                                @* </li> *@
-                                @* <li class="nav-item dropdown"> *@
-                                @*     <a href="javascript:void(0)" class="nav-link active" data-toggle="dropdown"><i class="fe fe-file"></i> Pages</a> *@
-                                @*     <div class="dropdown-menu dropdown-menu-arrow"> *@
-                                @*         <a href="./profile.html" class="dropdown-item ">Profile</a> *@
-                                @*         <a href="./login.html" class="dropdown-item ">Login</a> *@
-                                @*         <a href="./register.html" class="dropdown-item ">Register</a> *@
-                                @*         <a href="./forgot-password.html" class="dropdown-item ">Forgot password</a> *@
-                                @*         <a href="./400.html" class="dropdown-item ">400 error</a> *@
-                                @*         <a href="./401.html" class="dropdown-item ">401 error</a> *@
-                                @*         <a href="./403.html" class="dropdown-item ">403 error</a> *@
-                                @*         <a href="./404.html" class="dropdown-item ">404 error</a> *@
-                                @*         <a href="./500.html" class="dropdown-item ">500 error</a> *@
-                                @*         <a href="./503.html" class="dropdown-item ">503 error</a> *@
-                                @*         <a href="./email.html" class="dropdown-item ">Email</a> *@
-                                @*         <a href="./empty.html" class="dropdown-item active">Empty page</a> *@
-                                @*         <a href="./rtl.html" class="dropdown-item ">RTL mode</a> *@
-                                @*     </div> *@
-                                @* </li> *@
-                                @* <li class="nav-item dropdown"> *@
-                                @*     <a href="./form-elements.html" class="nav-link"><i class="fe fe-check-square"></i> Forms</a> *@
-                                @* </li> *@
-                                @* <li class="nav-item"> *@
-                                @*     <a href="./gallery.html" class="nav-link"><i class="fe fe-image"></i> Gallery</a> *@
-                                @* </li> *@
-                                @* <li class="nav-item"> *@
-                                @*     <a href="./docs/index.html" class="nav-link"><i class="fe fe-file-text"></i> Documentation</a> *@
-                                @* </li> *@
                             </ul>
                         </div>
                     </div>
@@ -244,7 +212,7 @@
                                     <li><a href="#">Fifth link</a></li>
                                     <li><a href="#">Sixth link</a></li>
                                 </ul>
-                            </div>
+                            </div>  
                             <div class="col-6 col-md-3">
                                 <ul class="list-unstyled mb-0">
                                     <li><a href="#">Other link</a></li>
@@ -281,6 +249,9 @@
     </div>
 
     <script src="~/assets/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
     @await RenderSectionAsync("modals", required: false)
 
     @await RenderSectionAsync("Scripts", required: false)

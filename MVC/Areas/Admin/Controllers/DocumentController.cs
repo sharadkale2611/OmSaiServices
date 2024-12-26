@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OmSaiModels.Admin;
 using OmSaiServices.Admin.Implementations;
+using OmSaiServices.Admin.Interfaces;
 
 namespace GeneralTemplate.Areas.Admin.Controllers
 {
@@ -15,7 +16,7 @@ namespace GeneralTemplate.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            ViewBag.documents = _documentService.GetAll();
+            ViewBag.AllData = _documentService.GetAll();
             return View();
         }
         [HttpPost]
@@ -88,28 +89,29 @@ namespace GeneralTemplate.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
-            try
-            {
-                if (id != null)
-                {
-                    TempData["success"] = "Record deleted successfully!";
-                    _documentService.Delete(id);
-                    return RedirectToAction(nameof(Index));
-                }
-                else
-                {
-                    TempData["error"] = "Invaild Id. Please try again.";
+			//try
+			//{
+			//    if (id != null)
+			//    {
+			//        TempData["success"] = "Record deleted successfully!";
+			//        _documentService.Delete(id);
+			//        return RedirectToAction(nameof(Index));
+			//    }
+			//    else
+			//    {
+			//        TempData["error"] = "Invaild Id. Please try again.";
 
-                    return View();
-                }
+			//        return View();
+			//    }
 
-            }
-            catch
-            {
-                TempData["error"] = "Something went wrong!";
-                return View("Index");
-            }
-
-        }
+			//}
+			//catch
+			//{
+			//    TempData["error"] = "Something went wrong!";
+			//    return View("Index");
+			//}
+			_documentService.Delete(id);
+			return RedirectToAction("Index");
+		}
     }
 }

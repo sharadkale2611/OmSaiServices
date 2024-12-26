@@ -18,7 +18,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12" >
                 <div class="card mb-4">
                         Project Form
-                        <form id="assetForm" method="post" asp-area="admin" asp-controller="Project" asp-action="Create" asp-antiforgery="true">
+                        <form id="assetForm" method="post" asp-area="Admin" asp-controller="Project" asp-action="Create" asp-antiforgery="true">
                             <input type="hidden" asp-for="ProjectId" id="projectId" />
                             <div class="card-body">
                               
@@ -76,7 +76,7 @@
 
 									<div class="col-md-6  mb-3">
 										<label asp-for="Remark" class="col-form-label">Remark</label>
-										<input type="text" class="form-control" asp-for="TotalManPower" placeholder="Remark" required>
+										<input type="text" class="form-control" asp-for="Remark" placeholder="Remark" required>
 										<span asp-validation-for="Remark" class="text-danger"></span>
 
 									</div>
@@ -87,14 +87,14 @@
 
 									<div class="col-md-6  mb-3">
 										<label asp-for="ProjectStartDate" class="col-form-label">ProjectStartDate</label>
-										<input type="text" class="form-control" asp-for="ProjectStartDate" placeholder="ProjectStartDate" required>
+										<input type="date" class="form-control" asp-for="ProjectStartDate" placeholder="ProjectStartDate" required>
 										<span asp-validation-for="ProjectStartDate" class="text-danger"></span>
 
 									</div>
 
 									<div class="col-md-6  mb-3">
 										<label asp-for="ProjectEndDate" class="col-form-label">ProjectEndDate</label>
-										<input type="text" class="form-control" asp-for="ProjectEndDate" placeholder="ProjectEndDate" required>
+										<input type="date" class="form-control" asp-for="ProjectEndDate" placeholder="ProjectEndDate" required>
 										<span asp-validation-for="ProjectEndDate" class="text-danger"></span>
 
 									</div>

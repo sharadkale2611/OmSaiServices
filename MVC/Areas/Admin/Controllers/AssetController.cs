@@ -1,41 +1,43 @@
-﻿using OmSaiServices.Admin.Implementations;
+﻿using GeneralTemplate.Areas.Identity.Data;
+using GeneralTemplate.Migrations;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Operations;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using OmSaiModels.Admin;
+using OmSaiServices.Admin.Implementations;
 using OmSaiServices.Admin.Interfaces;
 
 namespace GeneralTemplate.Areas.Admin.Controllers
 {
 	[Area("Admin")]
-	public class ProjectController : Controller
+	public class AssetController : Controller
 	{
-		private readonly ProjectService _projectService;
-		public ProjectController()
-		{
-			_projectService = new ProjectService();
+
+		private readonly AssetService _assetService;
+		public AssetController()
+		{ 
+			_assetService = new AssetService();
+			
 		}
 		public IActionResult Index()
 		{
-			ViewBag.AllData = _projectService.GetAll();
+			ViewBag.AllData = _assetService.GetAll();
 			return View();
 		}
-
-		public IActionResult Create()
-		{
-			ViewBag.AllData = _projectService.GetAll();
-			return View();
-		}
-
+		
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult Create(ProjectModel model)
+		public IActionResult Create(AssetModel model)
 		{
+			//var result =  _assetService.Create(model);			
+			//return RedirectToAction(nameof(Index));
 			try
 			{
 				if (ModelState.IsValid)
 				{
 					TempData["success"] = "Record added successfully!";
-
-					_projectService.Create(model);
+					_assetService.Create(model);
 				}
 				else
 				{
@@ -50,7 +52,6 @@ namespace GeneralTemplate.Areas.Admin.Controllers
 					TempData["errors"] = errorMessages;
 				}
 
-		
 				return RedirectToAction(nameof(Index));// nameof checks method compiletime to avoid errors
 													   //return RedirectToAction(nameof(Index), model);    // If we pass data, it will append to url as a query string
 
@@ -60,27 +61,18 @@ namespace GeneralTemplate.Areas.Admin.Controllers
 				TempData["error"] = "Something went wrong!";
 				return View("Index", model);
 			}
-
 		}
-
-		public IActionResult Edit(int id)
-		{
-			ViewBag.AllData = _projectService.GetAll();
-			var p = _projectService.GetById(id);
-			return View(p);
-		}
-
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult Edit(ProjectModel model)
-		{
 
+		public IActionResult Edit(AssetModel model)
+		{
 			try
 			{
 				if (ModelState.IsValid)
 				{
 					TempData["success"] = "Record updated successfully!";
-					_projectService.Update(model);
+					_assetService.Update(model);
 				}
 				else
 				{
@@ -102,18 +94,16 @@ namespace GeneralTemplate.Areas.Admin.Controllers
 				TempData["error"] = "Something went wrong!";
 				return View("Index", model);
 			}
-			//_projectService.Update(model);
-			//TempData["success"] = "Project Updated successfully!";
-			//return View(model);
 		}
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
+
 		public IActionResult Delete(int id)
 		{
-			_projectService.Delete(id);
-
-			TempData["success"] = "Project deleted successfully!";
+		
+			_assetService.Delete(id);
+			TempData["success"] = "Record deleted successfully!";
 
 			return RedirectToAction("Index");
 		}

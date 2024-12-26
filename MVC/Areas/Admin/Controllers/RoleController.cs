@@ -1,5 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using OmSaiModels.Admin;
+using OmSaiServices.Admin.Implementations;
+
+
 
 namespace GeneralTemplate.Areas.Admin.Controllers
 {
@@ -13,89 +17,105 @@ namespace GeneralTemplate.Areas.Admin.Controllers
 			_roleManager = roleManager;
 		}
 
-
 		public IActionResult Index()
 		{
 			var roles = _roleManager.Roles.ToList();
-			return View(roles);
+			ViewBag.AllData = roles;
+			return View();
 		}
 
-		public IActionResult Create()
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Create(IdentityRole model)
 		{
-			return View();
+			try
+			{
+				if (string.IsNullOrWhiteSpace(model.Name))
+				{
+					ModelState.AddModelError(string.Empty, "Role name cannot be empty.");
+				}
+
+				if (ModelState.IsValid)
+				{
+					TempData["success"] = "Record added successfully!";
+
+					var result = await _roleManager.CreateAsync(new IdentityRole(model.Name));
+					if (result.Succeeded)
+					{
+						return RedirectToAction(nameof(Index));
+					}
+				}
+				else
+				{
+					var errorMessages = new List<string>();
+					foreach (var state in ModelState)
+					{
+						foreach (var error in state.Value.Errors)
+						{
+							errorMessages.Add(error.ErrorMessage);
+						}
+					}
+					TempData["errors"] = errorMessages;
+				}
+
+				return RedirectToAction(nameof(Index));// nameof checks method compiletime to avoid errors
+
+			}
+			catch
+			{
+				TempData["error"] = "Something went wrong!";
+				return View("Index", model);
+			}
 		}
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Create(string roleName)
+		public async Task<IActionResult> Edit(IdentityRole model)
 		{
-			if (string.IsNullOrWhiteSpace(roleName))
+			try
 			{
-				ModelState.AddModelError(string.Empty, "Role name cannot be empty.");
-				return View();
-			}
+				var role = await _roleManager.FindByIdAsync(model.Id);
+				if (role == null) return NotFound();
 
-			var result = await _roleManager.CreateAsync(new IdentityRole(roleName));
-			if (result.Succeeded)
+				if (string.IsNullOrWhiteSpace(model.Name))
+				{
+					ModelState.AddModelError(string.Empty, "Role name cannot be empty.");
+				}
+
+
+				if (ModelState.IsValid)
+				{
+					TempData["success"] = "Record updated successfully!";
+					role.Name = model.Name;
+					var result = await _roleManager.UpdateAsync(role);
+
+					if (result.Succeeded)
+					{
+						return RedirectToAction(nameof(Index));
+					}
+
+				}
+				else
+				{
+					var errorMessages = new List<string>();
+					foreach (var state in ModelState)
+					{
+						foreach (var error in state.Value.Errors)
+						{
+							errorMessages.Add(error.ErrorMessage);
+						}
+					}
+					TempData["errors"] = errorMessages;
+				}
+
+				return RedirectToAction(nameof(Index));             // nameof checks method compiletime to avoid errors
+			}
+			catch
 			{
-				return RedirectToAction(nameof(Index));
+				TempData["error"] = "Something went wrong!";
+				return View("Index", model);
 			}
-
-			foreach (var error in result.Errors)
-			{
-				ModelState.AddModelError(string.Empty, error.Description);
-			}
-
-			return View();
-		}
-
-		public async Task<IActionResult> Edit(string id)
-		{
-			if (string.IsNullOrWhiteSpace(id)) return NotFound();
-
-			var role = await _roleManager.FindByIdAsync(id);
-			if (role == null) return NotFound();
-
-			return View(role);
-		}
-
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit(IdentityRole identityRole)
-		{
-			var role = await _roleManager.FindByIdAsync(identityRole.Id);
-			if (role == null) return NotFound();
-
-			if (string.IsNullOrWhiteSpace(identityRole.Name))
-			{
-				ModelState.AddModelError(string.Empty, "Role name cannot be empty.");
-				return View(role);
-			}
-
-			role.Name = identityRole.Name;
-			var result = await _roleManager.UpdateAsync(role);
-
-			if (result.Succeeded)
-			{
-				return RedirectToAction(nameof(Index));
-			}
-
-			foreach (var error in result.Errors)
-			{
-				ModelState.AddModelError(string.Empty, error.Description);
-			}
-
-			return View(role);
-		}
-
-		public async Task<IActionResult> Delete(string id)
-		{
-			if (string.IsNullOrWhiteSpace(id)) return NotFound();
-
-			var role = await _roleManager.FindByIdAsync(id);
-			if (role == null) return NotFound();
-
-			return View(role);
 		}
 
 		[HttpPost, ActionName("Delete")]
@@ -118,5 +138,6 @@ namespace GeneralTemplate.Areas.Admin.Controllers
 
 			return View(role);
 		}
+
 	}
 }

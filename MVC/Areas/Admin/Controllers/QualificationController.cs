@@ -18,22 +18,13 @@ namespace GeneralTemplate.Areas.Admin.Controllers
 
             }
 
-            //public IActionResult Index()
-            //{
-
-            //    return View(_departmentService.GetAll());
-            //}
-
-
             public ActionResult Index()
             {
-                var allData = _qualificationService.GetAll();
-
-                ViewBag.AllData = allData;
+                var AllData = _qualificationService.GetAll();
+                ViewBag.AllData = AllData;
                 
                 return View();
             }
-
 
             [HttpPost]
             [ValidateAntiForgeryToken]
@@ -70,24 +61,7 @@ namespace GeneralTemplate.Areas.Admin.Controllers
                 }
             }
 
-
-
-
-            //[HttpPost]
-            //public IActionResult Create(DepartmentModel d)
-            //{
-            //    DepartmentModel s = new DepartmentModel();
-            //    _departmentService.Create(d);
-
-            //    return RedirectToAction("Index");
-            //}
-
-            public IActionResult Edit(int id)
-            {
-                QualificationModel s = _qualificationService.GetById(id);
-                return View(s);
-            }
-
+          
             [HttpPost]
             [ValidateAntiForgeryToken]
             public ActionResult Edit(QualificationModel model)
@@ -121,23 +95,11 @@ namespace GeneralTemplate.Areas.Admin.Controllers
                 }
             }
 
-
-
-            //[HttpPost]
-            //public IActionResult Edit(DepartmentModel d)
-            //{ 
-            //    _departmentService.Update(d);
-            //    return RedirectToAction("Index");
-            //}
-
-
             public IActionResult Delete(int id)
             {
                 _qualificationService.Delete(id);
                 return RedirectToAction("Index");
             }
-
-
 
         }
 

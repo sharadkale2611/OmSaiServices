@@ -110,8 +110,5 @@ namespace GeneralTemplate.Areas.Admin.Controllers
 			return RedirectToAction("Index");
 		}
 
-
-
-
 	}
 }

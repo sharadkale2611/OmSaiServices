@@ -10,7 +10,7 @@ namespace OmSaiModels.Admin
 	public class AssetModel
 	{
 		[Key]
-		public int AssetId { get; set; }
+		public int? AssetId { get; set; }
 
 		[Required(ErrorMessage = "Asset Name is required.")]
 		[StringLength(30, ErrorMessage = "Asset Name cannot exceed 30 characters.")]

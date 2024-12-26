@@ -16,90 +16,99 @@
 }
 
 <div class="app-content-header">
+    <!--begin::Container-->
     <div class="container-fluid">
+        <!--begin::Row-->
         <div class="row">
             <div class="col-sm-6">
-                <h3 class="mb-0">
+                <h3 class="page-title">
                     Documents
                     <button class="btn btn-sm btn-primary" id="btnShowForm">Add New</button>
                 </h3>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
-                    <li class="breadcrumb-item"><a href="#">Management</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Documents</li>
+                    <li class="breadcrumb-item"><a href="#">Master</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Documents
+                    </li>
                 </ol>
             </div>
-        </div>
-    </div>
-</div>
+        </div> <!--end::Row-->
+    </div> <!--end::Container-->
+</div> <!--end::App Content Header--> <!--begin::App Content-->
+
 
 <div class="app-content">
+    <!--begin::Container-->
     <div class="container-fluid">
         <partial name="~/Views/shared/_alertpartial.cshtml" />
         <div class="row">
+
+
             <div class="col-lg-12 col-md-12 col-sm-12" id="leftCard">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <p>Total Records: <b>@ViewBag.TotalRecords</b></p>
-                        <table class="table table-bordered table-striped">
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table card-table table-vcenter text-nowrap">
                             <thead>
                                 <tr>
-                                    <th style="width: 10px">#</th>
+                                    <th class="w-1">No.</th>
                                     <th>Document Name</th>
                                     <th>Status</th>
-                                    <th class="text-center">Action</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var document in ViewBag.documents)
+                                @foreach (var item in ViewBag.AllData)
                                 {
                                     serialNumber++;
                                     <tr class="align-middle">
                                         <td>@serialNumber</td>
-                                        <td>@document.DocumentName</td>
+                                        <td>@item.DocumentName</td>
                                         <td>
-
-                                            @if (document.Status == true)
+                                            @if (item.Status == true)
                                             {
-                                                <span class="badge text-success">Active</span>
+                                                <span class="status-icon bg-success"></span> <span>Active</span>
                                             }
                                             else
                                             {
-                                                <span class="badge text-danger">Inactive</span>
+                                                <span class="status-icon bg-danger"></span> <span>Inactive</span>
                                             }
                                         </td>
                                         <td>
                                             <nav class="nav justify-content-center">
-                                                <a class="nav-link badge shadow m-1 text-warning btn btnEdit"
-                                                    data-id="@document.DocumentId"
-                                                    data-name="@document.DocumentName"
-                                                    data-status="@document.Status">
-                                                    <i class="bi bi-pencil-square"></i> Edit
+                                                <a class="nav-link badge shadow m-0 text-warning btn btnEdit"
+                                                   data-id="@item.DocumentId"
+                                                   data-name="@item.DocumentName"
+                                                   data-status="@item.Status">
+                                                    <i class="fe fe-edit"></i>
                                                 </a>
-                                                <a class="nav-link badge shadow m-1 text-danger btn btn-delete"
-                                                   data-delete_id="@document.DocumentId"
-                                                   data-delete_display="@document.DocumentName">
-                                                    <i class="bi bi-trash3-fill"></i> Delete
+                                                <a class="nav-link badge shadow m-0 text-danger btn btn-delete"
+                                                   data-delete_id="@item.DocumentId"
+                                                   data-delete_display="@item.DocumentName">
+                                                    <i class="fe fe-trash"></i>
                                                 </a>
                                             </nav>
                                         </td>
+
                                     </tr>
                                 }
+
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-4 col-md-4 col-sm-12" id="rightCard" style="display:none;">
-                <div class="card card-warning card-outline mb-4 mt-4">
+                <div class="card card-warning card-outline mb-4 ">
                     <div asp-validation-summary="All" class="text-danger"></div>
-                    <form id="documentForm" method="post" asp-area="admin" asp-controller="Document" asp-action="Create" asp-antiforgery="true">
-                        <input type="hidden" asp-for="DocumentId" id="documentId" />
+                    <form id="DocumentForm" method="post" asp-area="admin" asp-controller="Document" asp-action="Create" asp-antiforgery="true">
+                        <input type="hidden" asp-for="DocumentId" id="DocumentId" />
                         <div class="card-body">
                             <div class="mb-3">
                                 <label asp-for="DocumentName" class="col-form-label">Document Name</label>
-                                <input type="text" class="form-control" asp-for="DocumentName"  placeholder="Document Name" required>
+                                <input type="text" class="form-control" asp-for="DocumentName" placeholder="Document Name" required>
                             </div>
                             <div class="form-check mt-2">
                                 <input class="form-check-input" asp-for="Status" type="checkbox" id="status" checked>
@@ -107,15 +116,18 @@
                             </div>
                         </div>
                         <div class="card-footer text-center">
-                            <button type="submit" class="btn btn-outline-warning" id="btnSubmit">Save</button>
-                            <button type="button" class="btn btn-outline-danger" id="btnCloseForm">Cancel</button>
+                            <button type="submit" class="btn btn-outline-secondary" id="btnSubmit">Save</button>
+                            <button type="button" class="btn btn-outline-warning" id="btnCloseForm">Cancel</button>
                         </div>
                     </form>
                 </div>
             </div>
+
+
         </div>
     </div>
 </div>
+
 
 @section modals {
     <partial name="~/Views/shared/_DeleteModelPartial.cshtml" />
@@ -129,8 +141,8 @@
             $('#btnShowForm').fadeOut();
             $('#btnSubmit').text("Save");
 
-            $('#documentForm').attr('action', '/admin/Document/Create');
-            $('#documentId').val("");
+            $('#DocumentForm').attr('action', '/admin/Document/Create');
+            $('#DocumentId').val("");
         });
 
         $('#btnCloseForm').click(() => {
@@ -146,9 +158,9 @@
             $('#btnSubmit').text("Update");
 
             let data = $(this).data();
-            $('#documentId').val(data.id);
+            $('#DocumentId').val(data.id);
             $('#DocumentName').val(data.name);
-            $('#documentForm').attr('action', '/admin/Document/Edit');
+            $('#DocumentForm').attr('action', '/admin/Document/Edit');
         });
         $('.btn-delete').click(function () {
             $('#leftCard').removeClass("col-lg-12 col-md-12").addClass("col-lg-8 col-md-8");
@@ -157,8 +169,8 @@
             $('#btnSubmit').text("Delete");
 
             let data = $(this).data();
-            $('#documentId').val(data.delete_id);
-            $('#documentForm').attr('action', '/admin/Document/Edit');
+            $('#DocumentId').val(data.delete_id);
+            $('#DocumentForm').attr('action', '/admin/Document/Delete');
         });
     </script>
 }

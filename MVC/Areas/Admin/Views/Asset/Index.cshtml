@@ -1,11 +1,9 @@
-﻿@using Microsoft.AspNetCore.Identity.Data;
-@model OmSaiModels.Admin.DepartmentModel
-
+﻿@model OmSaiModels.Admin.AssetModel;
 @{
-    ViewData["Title"] = "Departments";
+    ViewData["Title"] = "Assets";
     Layout = "/Views/Shared/_Layout.cshtml";
     ViewData["AreaName"] = "Admin";
-    ViewData["ControllerName"] = "Department";
+    ViewData["ControllerName"] = "Asset";
     int serialNumber = 0;
 }
 
@@ -17,7 +15,6 @@
     </style>
 }
 
-
 <div class="app-content-header">
     <!--begin::Container-->
     <div class="container-fluid">
@@ -25,7 +22,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <h3 class="page-title">
-                    Departments
+                    Assets
                     <button class="btn btn-sm btn-primary" id="btnShowForm">Add New</button>
                 </h3>
             </div>
@@ -33,13 +30,14 @@
                 <ol class="breadcrumb float-sm-end">
                     <li class="breadcrumb-item"><a href="#">Master</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
-                        Departments
+                        Assets
                     </li>
                 </ol>
             </div>
         </div> <!--end::Row-->
     </div> <!--end::Container-->
 </div> <!--end::App Content Header--> <!--begin::App Content-->
+
 
 
 <div class="app-content">
@@ -56,7 +54,7 @@
                             <thead>
                                 <tr>
                                     <th class="w-1">No.</th>
-                                    <th>Department Name</th>
+                                    <th>Asset Name</th>
                                     <th>Status</th>
                                     <th></th>
                                 </tr>
@@ -67,7 +65,7 @@
                                     serialNumber++;
                                     <tr class="align-middle">
                                         <td>@serialNumber</td>
-                                        <td>@item.DepartmentName</td>
+                                        <td>@item.AssetName</td>
                                         <td>
                                             @if (item.Status == true)
                                             {
@@ -81,14 +79,14 @@
                                         <td>
                                             <nav class="nav justify-content-center">
                                                 <a class="nav-link badge shadow m-0 text-warning btn btnEdit"
-                                                   data-id="@item.DepartmentId"
-                                                   data-name="@item.DepartmentName"
+                                                   data-id="@item.AssetId"
+                                                   data-name="@item.AssetName"
                                                    data-status="@item.Status">
                                                     <i class="fe fe-edit"></i>
                                                 </a>
                                                 <a class="nav-link badge shadow m-0 text-danger btn btn-delete"
-                                                   data-delete_id="@item.DepartmentId"
-                                                   data-delete_display="@item.DepartmentName">
+                                                   data-delete_id="@item.AssetId"
+                                                   data-delete_display="@item.AssetName">
                                                     <i class="fe fe-trash"></i>
                                                 </a>
                                             </nav>
@@ -106,12 +104,12 @@
             <div class="col-lg-4 col-md-4 col-sm-12" id="rightCard" style="display:none;">
                 <div class="card card-warning card-outline mb-4 ">
                     <div asp-validation-summary="All" class="text-danger"></div>
-                    <form id="DepartmentForm" method="post" asp-area="admin" asp-controller="Department" asp-action="Create" asp-antiforgery="true">
-                        <input type="hidden" asp-for="DepartmentId" id="DepartmentId" />
+                    <form id="AssetForm" method="post" asp-area="admin" asp-controller="Asset" asp-action="Create" asp-antiforgery="true">
+                        <input type="hidden" asp-for="AssetId" id="AssetId" />
                         <div class="card-body">
                             <div class="mb-3">
-                                <label asp-for="DepartmentName" class="col-form-label">Department Name</label>
-                                <input type="text" class="form-control" asp-for="DepartmentName" placeholder="Department Name" required>
+                                <label asp-for="AssetName" class="col-form-label">Asset Name</label>
+                                <input type="text" class="form-control" asp-for="AssetName" placeholder="Asset Name" required>
                             </div>
                             <div class="form-check mt-2">
                                 <input class="form-check-input" asp-for="Status" type="checkbox" id="status" checked>
@@ -144,8 +142,8 @@
             $('#btnShowForm').fadeOut();
             $('#btnSubmit').text("Save");
 
-            $('#DepartmentForm').attr('action', '/admin/Department/Create');
-            $('#DepartmentId').val("");
+            $('#AssetForm').attr('action', '/admin/Asset/Create');
+            $('#AssetId').val("");
         });
 
         $('#btnCloseForm').click(() => {
@@ -161,9 +159,9 @@
             $('#btnSubmit').text("Update");
 
             let data = $(this).data();
-            $('#DepartmentId').val(data.id);
-            $('#DepartmentName').val(data.name);
-            $('#DepartmentForm').attr('action', '/admin/Department/Edit');
+            $('#AssetId').val(data.id);
+            $('#AssetName').val(data.name);
+            $('#AssetForm').attr('action', '/admin/Asset/Edit');
         });
         $('.btn-delete').click(function () {
             $('#leftCard').removeClass("col-lg-12 col-md-12").addClass("col-lg-8 col-md-8");
@@ -172,8 +170,8 @@
             $('#btnSubmit').text("Delete");
 
             let data = $(this).data();
-            $('#DepartmentId').val(data.delete_id);
-            $('#DepartmentForm').attr('action', '/admin/Department/Delete');
+            $('#AssetId').val(data.delete_id);
+            $('#AssetForm').attr('action', '/admin/Asset/Delete');
         });
     </script>
 }
