@@ -1,0 +1,361 @@
+﻿@using OmSaiModels.Worker;
+@model WorkerAttendanceModel;
+@{
+    Layout = "_layout2";
+    var worker = @ViewBag.Worker;
+    var fullName = worker.FirstName + " " + worker.MiddleName + " " + worker.LastName;
+}
+<style>
+
+
+    #video, #canvas {
+        border-radius: 10px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 2px solid #007bff;
+        box-shadow: 1px 1px 5px green;
+    }
+
+    #canvas {
+        display: none;
+    }
+
+    .id-card {
+        width: 300px;
+        height: 450px;
+        border: 2px solid #007bff;
+        border-radius: 10px;
+        background: #f8f9fa;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+    }
+
+        .id-card img.profile {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid #007bff;
+        }
+
+        .id-card h5 {
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .id-card p {
+            margin: 5px 0;
+            color: #6c757d;
+        }
+
+        .id-card .barcode {
+            margin-top: 20px;
+        }
+
+            .id-card .barcode img {
+                width: 80%;
+            }
+
+</style>
+
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-danger justify-content-center align-items-center ">
+    <a class="navbar-brand text-white" href="#">Om Sai Services</a>
+</nav>
+
+<form id="attendanceForm" style="display:none;">
+
+*
+    WorkerId: <input type="text" id="WorkerId" asp-for="WorkerId" value="@worker.WorkerId" /> 
+    SiteId: <input type="text" id="SiteId" asp-for="SiteId" value="@worker.SiteId" />
+    ShiftId: <input type="text" id="ShiftId" asp-for="ShiftId" value="1" />
+
+    InSelfiPath: <input type="text" id="InSelfiPath" name="InSelfiPath" value="default" /> <br />
+
+    InGeoLocation: <input type="text" id="InGeoLocation" name="InGeoLocation" /> 
+
+    <button type="button" id="submitButton">Submit</button>
+
+</form>
+
+
+<div class="d-flex justify-content-center align-items-center vh-100 mt-4">
+    <div class="id-card mt-4">
+        <h2 class="text-center mb-4">Selfie Attendance</h2>
+
+        <!-- Company Logo -->
+        @* <img src="https://via.placeholder.com/80x80" alt="Company Logo" class="mb-3"> *@
+
+        <!-- Profile Picture -->
+        @* <img src="https://via.placeholder.com/100x100" alt="Worker Profile" class="profile mb-3"> *@
+        <video id="video" autoplay playsinline class="border "></video>
+        <!-- Display Captured Image -->
+        <canvas id="canvas" class="border"></canvas>
+
+        <!-- Worker Information -->
+        <h5>@fullName</h5>
+        <p>Worker ID: @worker.WorkmanId</p>
+        <p>Department: @worker.DepartmentName</p>
+
+        <hr />
+        <p>Project: @worker.ProjectName</p>
+        <p>Site: @worker.SiteName</p>
+        <p id="result"></p>
+        <input type="hidden" id="txtCurrentLocation" />
+        <input type="hidden" id="txtSiteLocation" value="@worker.GpsLocation" />
+        <!-- Barcode -->
+        <div class="barcode">
+            @* <img src="https://via.placeholder.com/200x50" alt="Barcode"> *@
+            <button id="capture" class="btn btn-primary">Capture Selfie</button>
+            <button id="retake" class="btn btn-secondary shadow" style="display: none;">Retake</button>
+            <button id="saveAttendance" class="btn btn-primary shadow" style="display: none;">Submit Attendance</button>
+
+        </div>
+
+        <!-- Footer -->
+    </div>
+</div>
+
+
+<div class="container my-5 d-none">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <!-- Camera Preview -->
+            <div class="mb-3">
+                @* <video id="video" autoplay playsinline class="border "></video> *@
+            </div>
+            <!-- Capture and Submit Buttons -->
+            <div class="d-flex justify-content-between mb-3">
+                @* <button id="capture" class="btn btn-primary">Capture Selfie</button> *@
+            </div>
+            <!-- Attendance Form -->
+            @* <form id="attendance-form"> *@
+                <p id="output"></p>
+                <input type="hidden" id="selfieData" name="selfieData">
+                <button type="button" id="btnSubmitAttendance" class="btn btn-success w-100">Submit Attendance</button>
+            @* </form> *@
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+
+
+    <script>
+
+           $('#saveAttendance').click(()=>{
+              alert("btnSubmitAttendance");
+               setAttendance();
+          })
+
+        $(document).ready(function () {
+                  getGeoLocation();
+
+            const video = $('#video')[0];
+            const canvas = $('#canvas')[0];
+            const context = canvas.getContext('2d');
+
+            // Access the camera
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                    video.srcObject = stream;
+                })
+                .catch(function (err) {
+                    console.error("Error accessing the camera: ", err);
+                    alert("Camera access denied or not available.");
+                });
+
+            // Capture selfie
+            $('#capture').click(function () {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                $('#canvas').show();
+                $('#video').hide();
+                $('#retake').show();
+                $('#saveAttendance').show();
+                 
+                $('#capture').hide();
+                // Save the image data URL
+                const imageData = canvas.toDataURL('image/png');
+                $('#selfieData').val(imageData);
+
+                calculateDistance();
+            });
+
+            // Retake selfie
+            $('#retake').click(function () {
+                $('#canvas').hide();
+                $('#video').show();
+                $('#retake').hide();
+                $('#saveAttendance').hide();
+                $('#capture').show();
+                $('#selfieData').val('');
+                $('#result').val('');                 
+            });
+
+            // Submit attendance
+            $('#attendance-form').submit(function (event) {
+                event.preventDefault();
+                const name = $('#name').val();
+                const selfieData = $('#selfieData').val();
+                if (!selfieData) {
+                    alert("Please capture a selfie first.");
+                    return;
+                }
+                // Handle form submission (e.g., save to server)
+                console.log("Name:", name);
+                console.log("Selfie Data:", selfieData);
+                alert("Attendance submitted successfully!");
+                // Reset the form
+                $('#retake').click();
+                $('#attendance-form')[0].reset();
+            });
+        });
+
+
+        function setAttendance(){
+                 console.log('inside setAttendance!');
+
+                // Select the file input element by its ID
+                const fileInput = document.getElementById("fileInput");
+
+                  console.log('flag 1');
+ 
+                    // Add an event listener for the submit button
+                // document.getElementById("submitButton").addEventListener("click", () => {
+                    // Ensure a file is captured
+                     
+                    if (fileInput.files.length === 0) {
+                        alert("Please capture a selfie.");
+                        return;
+                    }
+                                      console.log('flag 2');
+
+                     // Prepare the form data
+                    const formData = new FormData();
+                    formData.append("WorkerId", 123); // Replace with actual WorkerId
+                    formData.append("SiteId", 456);  // Replace with actual SiteId
+                    formData.append("ShiftId", 789); // Replace with actual ShiftId
+                    formData.append("selfieImage", fileInput.files[0]);
+
+                    const baseUrl = window.location.origin;
+                     const apiUrl = `${baseUrl}/api/WorkerAttendance`;
+                     alert(apiUrl);
+                    // Send the data to the server
+                     $.post(apiUrl, formData, function(data) {
+                        if (data.success) {
+                            alert("Attendance recorded successfully!");
+                        } else {
+                            alert(`Error: ${data.message}`);
+                        }
+                    }).fail(function(error) {
+                        console.error("Error:", error);
+                    });
+
+
+                // });
+
+
+
+
+        }
+
+
+
+       function getGeoLocation() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(
+                            function (position) {
+                                const latitude = position.coords.latitude;
+                                const longitude = position.coords.longitude;
+                                const accuracy = position.coords.accuracy;
+
+                                     $('#txtCurrentLocation').val(latitude+", "+longitude);
+                                     $('#InGeoLocation').val(latitude+", "+longitude);
+                                     
+                                // document.getElementById('output').innerHTML = `
+                                //     Latitude: ${latitude}<br>
+                                //     Longitude: ${longitude}<br>
+                                //     Accuracy: ${accuracy} meters
+                                // `;
+                            },
+                            function (error) {
+                                switch (error.code) {
+                                    case error.PERMISSION_DENIED:
+                                        alert("User denied the request for Geolocation.");
+                                        break;
+                                    case error.POSITION_UNAVAILABLE:
+                                        alert("Location information is unavailable.");
+                                        break;
+                                    case error.TIMEOUT:
+                                        alert("The request to get user location timed out.");
+                                        break;
+                                    case error.UNKNOWN_ERROR:
+                                        alert("An unknown error occurred.");
+                                        break;
+                                }
+                            }
+                        );
+                    } else {
+                        alert("Geolocation is not supported by this browser.");
+                    }
+                }
+
+        function getDistanceInMeters(lat1, lon1, lat2, lon2) {
+                    const R = 6371000; // Radius of Earth in meters
+                    const toRadians = (degrees) => degrees * (Math.PI / 180);
+
+                    const dLat = toRadians(lat2 - lat1);
+                    const dLon = toRadians(lon2 - lon1);
+
+                    const a =
+                        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                        Math.cos(toRadians(lat1)) *
+                        Math.cos(toRadians(lat2)) *
+                        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+                    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+                    return R * c; // Distance in meters
+                }
+
+                function parseCoordinates(input) {
+                   const [lat, lon] = input.split(',').map(coord => parseFloat(coord.trim()));
+                   return { lat, lon };
+               }
+
+
+                function calculateDistance() {
+                    // Get input values
+                     const point1 = document.getElementById("txtCurrentLocation").value;
+                     const point2 = document.getElementById("txtSiteLocation").value;
+
+                    // Parse input strings into latitude and longitude
+                    const { lat: lat1, lon: lon1 } = parseCoordinates(point1);
+                    // for testing purpose site location hidden
+                     // const { lat: lat2, lon: lon2 } = parseCoordinates(point2);  
+                     const { lat: lat2, lon: lon2 } = parseCoordinates(point1);
+
+                    // Calculate the distance
+                    const distance = getDistanceInMeters(lat1, lon1, lat2, lon2);
+                     if(distance > 200){
+                           let distance2 = distance - 200;
+                           $("#saveAttendance").hide();
+                         // Display the result
+                         document.getElementById("result").innerHTML = `<span class="text-danger">You are away from Site: ${distance2.toFixed(2)} meters</span>`;
+                     }else{
+                            $("#saveAttendance").show();
+                           // Display the result
+                             document.getElementById("result").innerHTML = `<span class="text-success">Site Distance: ${distance.toFixed(2)} meters</span>`;
+                     }
+
+                }
+
+    </script>
+
+
+
+}

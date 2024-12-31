@@ -19,8 +19,9 @@ namespace OmSaiServices.Admin.Implementations
 
         public SiteService()
         {
-            sp_cud = "sp_CreateUpdateDeleteRestore_Sites";
-            sp_r = "sp_GetAll_Sites";
+            sp_cud = "usp_CreateUpdateDeleteRestore_Sites";
+            //sp_r = "usp_GetAll_Sites";
+            sp_r = "usp_GetAll_Project_Sites";
             _mapper = new Mapper();
         }
 
@@ -77,7 +78,7 @@ namespace OmSaiServices.Admin.Implementations
                 new("@SiteName", model.SiteName),
                 new("@SiteLocation", model.SiteLocation),
                 new("@GpsLocation", model.GpsLocation),
-                new("@Status", model.Status)
+                new("@Status", model.SiteStatus)
             };
         }
 
@@ -97,8 +98,6 @@ namespace OmSaiServices.Admin.Implementations
             {
                 new SqlParameter("@SiteId", id),
                 new SqlParameter("@ProjectId", ProjectId),
-                new SqlParameter("@SiteName", SiteName),
-                new SqlParameter("@CreatedAt", CreatedAt),
                 new SqlParameter("@Status", Status)
             };
         }

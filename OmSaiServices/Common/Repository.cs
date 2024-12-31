@@ -16,7 +16,6 @@ namespace OmSaiServices.Common
 	public class Repository<T> : IRepository<T> where T : class
 	{
 
-
 		public int Create(T entity, string procedureName, List<KeyValuePair<string, object>> parameters, string outputParameterName= "@LastInsertedId")
 		{
 			// Add a @type parameter manually

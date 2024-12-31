@@ -56,6 +56,10 @@ namespace OmSaiServices
 					{
 						property.SetValue(entity, Convert.ToDateTime(columnValue));
 					}
+					else if (propertyType == typeof(TimeSpan?))
+					{
+						property.SetValue(entity, columnValue as TimeSpan?);
+					}
 					else
 					{
 						// For other types (e.g., decimal, float, etc.)

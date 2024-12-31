@@ -1,0 +1,122 @@
+﻿@{
+    var worker = @ViewBag.AllData;
+    var fullName = worker.FirstName + " " + worker.MiddleName + " " + worker.LastName;
+
+}
+
+        <div class="my-3 my-md-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="media">
+                      <span class="avatar avatar-xxl mr-5" style="background-image: url(demo/faces/male/21.jpg)"></span>
+                      <div class="media-body">
+                        <h4 class="m-0 mb-1">@fullName</h4>
+                                <p class="text-muted mb-1"><b class="text-info">@worker.WorkmanId</b> [ <b>@worker.DepartmentName</b>]</p>
+                                <p class="text-muted mb-1">Qualification: <b>@worker.QualificationName</b></p>
+
+                        <ul class="social-links list-inline mb-0 mt-2">
+                          <li class="list-inline-item">
+                                        <i class="fa fa-phone"></i> &nbsp;&nbsp; @worker.MobileNumber
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Project And Site</h3>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-body">
+                                <p class="m-0"><b>@worker.ProjectName</b></p>
+                                <p class="text-muted mb-0">Site: <b>@worker.SiteName, @worker.SiteLocation</b></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+              </div>
+              <div class="col-lg-8">
+
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table card-table table-vcenter text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th class="w-1">No.</th>
+                                    <th>Document Name</th>
+                                    <th>Uploads</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Passport Photo</td>
+                                    <td>
+                                        <div class="media-object avatar avatar-md mr-4" style="background-image: url(demo/faces/male/16.jpg)"></div>
+                                    </td>
+                                    <td>
+                                        <span class="status-icon bg-danger"></span> <span>Pending</span>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-info"><i class="fe fe-upload"></i></button> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Passport Photo</td>
+                                    <td>
+                                        <div class="media-object avatar avatar-md mr-4" style="background-image: url(demo/faces/male/16.jpg)"></div>
+                                    </td>
+                                    <td>
+                                        <span class="status-icon bg-danger"></span> <span>Pending</span>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-info"><i class="fe fe-upload"></i></button> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Aadhar</td>
+                                    <td>
+                                        <div class="media-object avatar avatar-md mr-4" style="background-image: url(demo/faces/male/16.jpg)"></div>
+                                    </td>
+                                    <td>
+                                        <span class="status-icon bg-danger"></span> <span>Pending</span>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-info"><i class="fe fe-upload"></i></button> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>PAN Card</td>
+                                    <td>
+                                        <div class="media-object avatar avatar-md mr-4" style="background-image: url(demo/faces/male/16.jpg)"></div>
+                                    </td>
+                                    <td>
+                                        <span class="status-icon bg-danger"></span> <span>Pending</span>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-info"><i class="fe fe-upload"></i></button> 
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>

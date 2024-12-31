@@ -54,13 +54,28 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+// Seed roles and users
+//using (var scope = app.Services.CreateScope())
+//{
+//	var services = scope.ServiceProvider;
+//	try
+//	{
+//		await ApplicationSeeder.SeedRolesAndUsers(services);
+//	}
+//	catch (Exception ex)
+//	{
+//		var logger = services.GetRequiredService<ILogger<Program>>();
+//		logger.LogError(ex, "An error occurred while seeding roles and users.");
+//	}
+//}
+
+
 app.MapRazorPages();
 
 // Add URL Rewrite Rules
 var rewriteOptions = new RewriteOptions()
 	.AddRedirect(@"^Identity/(.*)", "$1"); // Redirect "Identity/..." to root
 app.UseRewriter(rewriteOptions);
-
 
 app.UseAuthentication();
 app.UseAuthorization();

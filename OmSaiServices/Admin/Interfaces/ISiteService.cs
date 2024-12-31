@@ -10,5 +10,6 @@ namespace OmSaiServices.Admin.Interfaces
 {
     public interface ISiteService:IRepository<SiteModel>
     {
-    }
+		// Add any branch-specific methods if needed
+	}
 }

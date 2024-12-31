@@ -34,7 +34,6 @@ namespace GeneralTemplate.Areas.Admin.Controllers
 				if (ModelState.IsValid)
 				{
 					TempData["success"] = "Record added successfully!";
-
 					_projectService.Create(model);
 				}
 				else

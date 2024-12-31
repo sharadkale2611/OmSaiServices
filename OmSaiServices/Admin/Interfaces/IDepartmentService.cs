@@ -10,5 +10,6 @@ namespace OmSaiServices.Admin.Interfaces
 {
     public interface IDepartmentService : IRepository<DepartmentModel>
     {
-    }
+		// Add any branch-specific methods if needed
+	}
 }

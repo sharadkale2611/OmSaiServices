@@ -10,12 +10,13 @@ namespace OmSaiModels.Admin
 	public class SiteModel
 	{
 		[Key]
-		public int SiteId { get; set; }
+		public int? SiteId { get; set; }
 		public int ProjectId { get; set; }
+		public string? ProjectName { get; set; }
 		public string SiteName { get; set; }
-		public string SiteLocation { get; set; }
+		public string? SiteLocation { get; set; }
 		public string? GpsLocation { get; set; }
-		public bool Status { get; set; } = true;
+		public bool SiteStatus { get; set; } = true;
 		
 	}
 }

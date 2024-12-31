@@ -54,15 +54,15 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">Sr No.</th>
-                                    <th class="text-center" scope="col">Project Name</th>
-                                    <th class="text-center" scope="col">Project Description</th>
-                                    <th class="text-center" scope="col">Total Man Power</th>
-                                    <th class="text-center" scope="col">Project Budget</th>
-                                    <th class="text-center" scope="col">Status</th>
-                                    <th class="text-center" scope="col">Remark</th>
-                                    <th class="text-center" scope="col">Project Start Date</th>
-                                    <th class="text-center" scope="col">Project End Date</th>
-                                    <th class="text-center" scope="col">Action</th>
+                                    <th class="" scope="col">Project Name</th>
+                                    <th class="" scope="col">Project Description</th>
+                                    <th class="" scope="col">Total Man Power</th>
+                                    <th class="" scope="col">Project Budget</th>
+                                    <th class="" scope="col">Status</th>
+                                    @* <th class="text-center" scope="col">Remark</th> *@
+                                    <th class="" scope="col">Project Start Date</th>
+                                    @* <th class="text-center" scope="col">Project End Date</th> *@
+                                    <th class="" scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,18 +76,23 @@
                                         <td>@project.TotalManPower</td>
                                         <td>@project.ProjectBudget</td>
                                         <td>@project.Status</td>
-                                        <td>@project.Remark</td>
+                                        @* <td>@project.Remark</td> *@
                                         <td>@project.ProjectStartDate</td>
-                                        <td>@project.ProjectEndDate</td>
+                                        @* <td>@project.ProjectEndDate</td> *@
                                         <td>
                                             <nav class="nav justify-content-center">
-                                                <a asp-action="edit" class="nav-link badge shadow m-1 text-warning btn btnEdit" asp-controller="Project" asp-area="Admin" asp-route-id="@project.ProjectId">
-                                                 
+
+                                                <a asp-action="edit" class="nav-link badge shadow text-info btn " asp-controller="Project" asp-area="Admin" asp-route-id="@project.ProjectId">
+                                                    <i class="fe fe-map"></i>
+                                                </a>
+
+                                                <a asp-action="edit" class="nav-link badge shadow ml-1 text-warning btn " asp-controller="Project" asp-area="Admin" asp-route-id="@project.ProjectId">                                                 
                                                     <i class="fe fe-edit"></i>
                                                 </a>
-                                                <a class="nav-link badge shadow m-0 text-danger btn btn-delete">
-                                                  @*  data-delete_id="@project.DepartmentId"
-                                                   data-delete_display="@project.DepartmentName"> *@
+
+                                                <a class="nav-link badge shadow m-0 text-danger btn btn-delete"
+                                                    data-delete_id="@project.ProjectId"
+                                                    data-delete_display="@project.ProjectName">
                                                     <i class="fe fe-trash"></i>
                                                 </a>
                                             </nav>

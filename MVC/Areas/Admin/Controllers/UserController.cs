@@ -1,6 +1,7 @@
 ﻿using GeneralTemplate.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GeneralTemplate.Areas.Admin.Controllers
 {
@@ -20,8 +21,22 @@ namespace GeneralTemplate.Areas.Admin.Controllers
 		// List Users
 		public async Task<IActionResult> Index()
 		{
-			var users = _userManager.Users.ToList();
-			return View(users);
+			var users = await _userManager.Users.ToListAsync(); // Get all users
+			var userRoles = new List<UserRolesViewModel>();
+
+			foreach (var user in users)
+			{
+				var roles = await _userManager.GetRolesAsync(user); // Get roles for each user
+				userRoles.Add(new UserRolesViewModel
+				{
+					Id = user.Id,
+					Email = user.Email,
+					Roles = roles.ToList()  // Explicitly convert IList<string> to List<string>
+				});
+			}
+
+			return View(userRoles); // Pass the userRoles to the view
+
 		}
 
 		// Create User (GET)
@@ -29,6 +44,87 @@ namespace GeneralTemplate.Areas.Admin.Controllers
 		{
 			return View();
 		}
+
+		// GET: User/Edit/{id}
+		public async Task<IActionResult> Edit(string id)
+		{
+			// Retrieve the user
+			var user = await _userManager.FindByIdAsync(id);
+			if (user == null)
+			{
+				return NotFound();
+			}
+
+			// Get all available roles and convert them to List<string>
+			var roles = await _roleManager.Roles.Select(r => r.Name).ToListAsync();
+
+			// Get the user's current roles
+			var userRoles = await _userManager.GetRolesAsync(user);
+
+			// Ensure the Roles and SelectedRoles are initialized and populated
+			var model = new EditUserViewModel
+			{
+				Id = user.Id,
+				Email = user.Email,
+				Roles = roles,  // List of all roles
+				SelectedRoles = userRoles.ToList()  // Convert to List<string>
+			};
+
+			return View(model);
+		}
+
+
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Edit(EditUserViewModel model)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View(model);
+			}
+
+			var user = await _userManager.FindByIdAsync(model.Id);
+			if (user == null)
+			{
+				return NotFound();
+			}
+
+			// Update the email address
+			user.Email = model.Email;
+			var updateResult = await _userManager.UpdateAsync(user);
+
+			if (!updateResult.Succeeded)
+			{
+				ModelState.AddModelError("", "Failed to update user.");
+				return View(model);
+			}
+
+			// Remove the user's current roles
+			var currentRoles = await _userManager.GetRolesAsync(user);
+			var removeResult = await _userManager.RemoveFromRolesAsync(user, currentRoles);
+
+			if (!removeResult.Succeeded)
+			{
+				ModelState.AddModelError("", "Failed to remove roles.");
+				return View(model);
+			}
+
+			// Add the selected roles
+			var addResult = await _userManager.AddToRolesAsync(user, model.SelectedRoles);
+
+			if (!addResult.Succeeded)
+			{
+				ModelState.AddModelError("", "Failed to assign roles.");
+				return View(model);
+			}
+
+			return RedirectToAction("Index");
+		}
+
+
+
+
 
 		// Create User (POST)
 		[HttpPost]

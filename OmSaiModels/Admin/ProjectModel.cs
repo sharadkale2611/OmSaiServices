@@ -11,21 +11,25 @@ namespace OmSaiModels.Admin
 	{
 		[Key]
 		public int? ProjectId { get; set; }
+
 		[Required(ErrorMessage = "Project Name is required.")]
 		public string ProjectName { get; set; }
 
-		public string ProjectDiscription { get; set; }
+		public string? ProjectDiscription { get; set; }
+
 		[Required]
 		public int TotalManPower { get; set; }
+
 		[Required]
 		public float ProjectBudget { get; set; }
-		[Required]
 
+		[Required]
 		public string Status { get; set; }
+
 		public string? Remark { get; set; }
-		[Required]
+
 		public DateTime? ProjectStartDate { get; set; }
-		[Required]
+
 		public DateTime? ProjectEndDate { get; set; }
 	}
 }
