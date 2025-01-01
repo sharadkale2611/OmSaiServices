@@ -21,6 +21,9 @@ namespace GeneralTemplate.Areas.Worker.Controllers
 		public IActionResult Index(string wokrman)
 		{
 
+			var attendanceHistory = _attendanceService.GetAll();
+
+
 			var worker = _workerService.GetProfileById(null, wokrman);
 
 			if (worker == null ||  wokrman == null)
@@ -37,7 +40,7 @@ namespace GeneralTemplate.Areas.Worker.Controllers
 
 		[HttpPost]
 		[Route("api/WorkerAttendance")]
-		public async Task<IActionResult> WorkerAttendance([FromForm] WorkerAttendanceModel model, IFormFile selfieImage)
+		public async Task<IActionResult> WorkerAttendance([FromForm] WorkerAttendanceModel model, IFormFile SelfieImage)
 		{
 			try
 			{
@@ -53,12 +56,12 @@ namespace GeneralTemplate.Areas.Worker.Controllers
 				}
 
 				// Check if an image is provided
-				if (selfieImage == null || selfieImage.Length == 0)
+				if (SelfieImage == null || SelfieImage.Length == 0)
 				{
 					return Json(new
 					{
 						success = false,
-						message = "Selfie image is required."
+						message = "Selfie image is required. too"
 					});
 				}
 
@@ -69,16 +72,16 @@ namespace GeneralTemplate.Areas.Worker.Controllers
 					Directory.CreateDirectory(uploadsFolder);
 				}
 
-				var fileName = $"{Guid.NewGuid()}_{selfieImage.FileName}";
+				var fileName = $"{Guid.NewGuid()}_{SelfieImage.FileName}";
 				var filePath = Path.Combine(uploadsFolder, fileName);
 
 				using (var stream = new FileStream(filePath, FileMode.Create))
 				{
-					await selfieImage.CopyToAsync(stream);
+					await SelfieImage.CopyToAsync(stream);
 				}
 
 				// Set the selfie path in the model
-				model.InSelfiPath = $"/selfies/{fileName}";
+				model.SelfieImage = $"/selfies/{fileName}";
 
 				// Call the service to manage attendance
 				_attendanceService.ManageAttendance(model);

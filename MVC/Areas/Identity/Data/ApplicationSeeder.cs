@@ -1,9 +1,30 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using OmSaiServices.Admin.Implementations;
 
 namespace GeneralTemplate.Areas.Identity.Data
 {
 	public class ApplicationSeeder
 	{
+		private static readonly DocumentService _documentService = new DocumentService();
+
+
+		public static async Task SeedDocuments(IServiceProvider serviceProvider)
+		{
+
+			var model = new OmSaiModels.Admin.DocumentModel { DocumentName = "Passport Photo", Status = true };
+			_documentService.Create(model);
+
+			model = new OmSaiModels.Admin.DocumentModel { DocumentName = "Aadhar Card", Status = true };
+			_documentService.Create(model);
+
+			model = new OmSaiModels.Admin.DocumentModel { DocumentName = "Pan Card", Status = true };
+			_documentService.Create(model);
+
+			model = new OmSaiModels.Admin.DocumentModel { DocumentName = "Education Proof", Status = true };
+			_documentService.Create(model);
+		}
+
+
 		public static async Task SeedRolesAndUsers(IServiceProvider serviceProvider)
 		{
 			// Get RoleManager and UserManager
@@ -26,7 +47,7 @@ namespace GeneralTemplate.Areas.Identity.Data
 			//var name = "Admin User";
 			var adminEmail = "admin@oss.com";
 			var adminPassword = "Admin@123";
-
+				
 			var adminUser = await userManager.FindByEmailAsync(adminEmail);
 			if (adminUser == null)
 			{

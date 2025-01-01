@@ -1,17 +1,17 @@
 ﻿@model GeneralTemplate.Areas.Identity.Data.EditUserViewModel
 
-<h2>Edit User</h2>
-
+<h2>Edit Staff</h2>
 <form method="post">
+<div class="row">
     @Html.AntiForgeryToken()
 
-    <div class="form-group">
+    <div class="form-group col-md-6">
         <label asp-for="Email" class="control-label">Email</label>
         <input asp-for="Email" class="form-control" required />
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
+        <div class="form-group col-md-6">
         <label>Roles</label>
         @foreach (var role in Model.Roles)
         {
@@ -28,5 +28,8 @@
         }
     </div>
 
+
+</div>
     <button type="submit" class="btn btn-primary">Save</button>
+    <a class="btn btn-danger" asp-area="admin" asp-controller="User" asp-action="Index">Cancel</a>
 </form>

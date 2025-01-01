@@ -21,6 +21,8 @@ namespace GeneralTemplate.Areas.Worker.Controllers
 		private readonly QualificationService _qualificationService;
 		private readonly WorkerQualificationService _workerQualificationService;
 		private readonly WorkerMobileNumbersService _workerMobileNumbersService;
+		private readonly WorkerAttendanceService _attendanceService;
+		private readonly WorkerDocumentService _workerDocumentService;
 
 
 		public WorkerController()
@@ -33,6 +35,8 @@ namespace GeneralTemplate.Areas.Worker.Controllers
 			_qualificationService = new QualificationService();
 			_workerProjectSiteService = new WorkerProjectSiteService();
 			_workerMobileNumbersService = new WorkerMobileNumbersService();
+			_attendanceService = new WorkerAttendanceService();
+			_workerDocumentService = new WorkerDocumentService();
 
 		}
 
@@ -51,6 +55,10 @@ namespace GeneralTemplate.Areas.Worker.Controllers
 		public IActionResult Profile(int id)
 		{
 			ViewBag.AllData = _workerService.GetProfileById(id, null);
+			ViewBag.AttendanceHistory = _attendanceService.GetAll(id);
+			ViewBag.WorkerDocuments = _workerDocumentService.GetAll(id);
+
+
 			return View();
 		}
 
@@ -107,6 +115,19 @@ namespace GeneralTemplate.Areas.Worker.Controllers
 						MobileNumber = MobileNumber
 					};
 					_workerMobileNumbersService.Create(model4);
+
+
+					var documentIds = new List<int> { 1, 2, 3, 4, 5, 6, 7 };
+
+					foreach (var docId in documentIds)
+					{
+						var workerDocument = new WorkerDocumentModel
+						{
+							WorkerId = lastWorkerId,
+							DocumentId = docId
+						};
+						_workerDocumentService.Create(workerDocument);
+					}
 
 				}
 				else

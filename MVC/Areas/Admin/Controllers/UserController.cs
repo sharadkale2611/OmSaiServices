@@ -42,8 +42,75 @@ namespace GeneralTemplate.Areas.Admin.Controllers
 		// Create User (GET)
 		public IActionResult Create()
 		{
-			return View();
+			// Retrieve all available roles
+			var roles = _roleManager.Roles.Select(r => r.Name).ToList();
+
+			// Initialize the ViewModel
+			var model = new CreateUserViewModel
+			{
+				Roles = roles // Populate with all available roles
+			};
+
+			return View(model);
 		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Create(CreateUserViewModel model)
+		{
+			if (!ModelState.IsValid)
+			{
+				// Reload roles in case of validation failure
+				model.Roles = _roleManager.Roles.Select(r => r.Name).ToList();
+				return View(model);
+			}
+
+			// Create a new user object
+			var user = new AppUser
+			{
+				UserName = model.Email,
+				Email = model.Email
+			};
+
+			// Attempt to create the user
+			var createResult = await _userManager.CreateAsync(user, model.Password);
+
+			if (!createResult.Succeeded)
+			{
+				foreach (var error in createResult.Errors)
+				{
+					ModelState.AddModelError("", error.Description);
+				}
+
+				// Reload roles in case of failure
+				model.Roles = _roleManager.Roles.Select(r => r.Name).ToList();
+				return View(model);
+			}
+
+			// Assign the selected roles to the user
+			if (model.SelectedRoles != null && model.SelectedRoles.Any())
+			{
+				var addRolesResult = await _userManager.AddToRolesAsync(user, model.SelectedRoles);
+
+				if (!addRolesResult.Succeeded)
+				{
+					foreach (var error in addRolesResult.Errors)
+					{
+						ModelState.AddModelError("", error.Description);
+					}
+
+					// Delete the user if role assignment fails
+					await _userManager.DeleteAsync(user);
+
+					// Reload roles in case of failure
+					model.Roles = _roleManager.Roles.Select(r => r.Name).ToList();
+					return View(model);
+				}
+			}
+
+			return RedirectToAction("Index");
+		}
+
 
 		// GET: User/Edit/{id}
 		public async Task<IActionResult> Edit(string id)
@@ -128,7 +195,7 @@ namespace GeneralTemplate.Areas.Admin.Controllers
 
 		// Create User (POST)
 		[HttpPost]
-		public async Task<IActionResult> Create(string email, string password)
+		public async Task<IActionResult> Create2(string email, string password)
 		{
 			var user = new AppUser { UserName = email, Email = email };
 			var result = await _userManager.CreateAsync(user, password);
